@@ -3,16 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #box{
+            height: 500px;
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
 <div id="box"></div>
-<script src="js/echarts.min.js"></script>
+<script src="echarts.min.js"></script>
 <script>
-    let echart=eacharts.init(document.getElementById('box'));
-    let aaa='dfsfdsfsdfd';
-      let a='11111';
-    let b='22222';
-    let c='4444';
+    let echart=echarts.init(document.getElementById('box'));
+    option = {
+        title: {
+            text: '折线图堆叠',
+            left:20
+        },
+        animation:false,
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎'],
+             top:'40px',
+            left:20
+        },
+        grid: {
+            top:'20%',
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一','周二','周三','周四','周五','周六','周日']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'邮件营销',
+                type:'line',
+                stack: '总量',
+                data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name:'联盟广告',
+                type:'line',
+                stack: '总量',
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name:'视频广告',
+                type:'line',
+                stack: '总量',
+                data:[150, 232, 201, 154, 190, 330, 410]
+            },
+
+        ]
+    };
+    option1 = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        toolbox: {
+            show : true,
+            feature : {
+
+
+                saveAsImage : {show: true}
+            }
+        },
+        series : [
+            {
+                name:'业务指标',
+                type:'gauge',
+                startAngle: 180,
+                endAngle: 0,
+                center : ['50%', '90%'],    // 默认全局居中
+                radius : 100,
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        width: 20
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                                       // 每份split细分多少段
+                    // 属性length控制线长
+                },
+                axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                    formatter: function(v){
+
+                    },
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        color: '#fff',
+                        fontSize: 15,
+                        fontWeight: 'bolder'
+                    }
+                },
+                pointer: {
+                    width:5,
+                    length: '40%',
+                    color: 'red'
+                },
+                title : {
+                    show : true,
+                    offsetCenter: [0, '-60%'],       // x, y，单位px
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        color: 'blue',
+                        fontSize: 30
+                    }
+                },
+                detail : {
+                    show : true,
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 0,
+                    borderColor: '#ccc',
+                    width: 20,
+                    height: 10,
+                    offsetCenter: [0, -40],       // x, y，单位px
+                    formatter:'{value}%',
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontSize : 13
+                    }
+                },
+                data:[{value: 50,color:'red'}]
+            }
+        ]
+    };
+
+    echart.setOption(option1);
+let obj={'在线':1,'忙碌':2,'离开':3,'离线':4};
+
+    console.log(ary.sort((a, b) => obj[a] - obj[b]));
+
 </script>
 </body>
 </html>
