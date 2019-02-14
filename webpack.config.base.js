@@ -5,8 +5,8 @@ const Happypack = require('happypack');
 module.exports = {
     resolve: {
         modules: [
-            path.resolve(__dirname,'node_modules'),
-            path.resolve(__dirname,'src')
+            path.resolve(__dirname, 'node_modules'),
+            path.resolve(__dirname, 'src')
         ],
         //extensions: ['echarts'],
         //mainFiles: ['.js', '.json', '.less'],
@@ -17,12 +17,12 @@ module.exports = {
         rules: [
             {
                 test: /.js$/,
-                include: path.resolve(__dirname,'src'),
+                include: path.resolve(__dirname, 'src'),
                 use: 'Happypack/loader?id=js'
             },
             {
                 test: /.css$/,
-                include: path.resolve(__dirname,'src'),
+                include: path.resolve(__dirname, 'src'),
                 use: ['style-loader', 'css-loader']
             }
         ]
@@ -30,10 +30,13 @@ module.exports = {
     plugins: [
         new Happypack({
             id: 'js',
-            loader: 'babel-loader',
-            options:{
-                cacheDirectory: true,
-            }
+            use: [{
+                loader: 'babel-loader',
+                options: {
+                    cacheDirectory: true,
+                    presets: ['env', 'react', 'stage-0']
+                }
+            }],
         })
     ],
 };
