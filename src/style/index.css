@@ -1,5 +1,5 @@
-.body{
+.box{
     height: 100%;
     width: 100%;
-    background: pink;
+    background: url("../images/会话左下角样式.jpg") no-repeat;
 }

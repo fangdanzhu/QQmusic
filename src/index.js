@@ -1,7 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom'
-
+import './style/less.less'
+import './style/index.css'
+import Home from './apps/Home'
 
 render(
-    <div>内容工e工3ww3</div>
+    <div className='box'>
+        <input type="text"/>
+        <p className='inner1'>test13</p>
+        <p className='inner2'>test2</p>
+        <Home/>
+    </div>
     ,document.getElementById('app'));

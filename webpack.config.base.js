@@ -16,14 +16,28 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.js$/,
+                test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
                 use: 'Happypack/loader?id=js'
             },
             {
-                test: /.css$/,
+                test: /\.(css|less)$/,
                 include: path.resolve(__dirname, 'src'),
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /\.(jpe?g|png|gif|mp3|mp4|ico)$/i,
+                use: ['file-loader?name=img/[name].[ext]']
+              /*  use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            limit: 1024 * 10,
+                          //  path: path.resolve(__dirname, 'dist/img'),
+                            filename:'img/[name].[ext]'
+                        }
+                    }
+                ]*/
             }
         ]
     },

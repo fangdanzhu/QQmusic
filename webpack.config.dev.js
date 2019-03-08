@@ -10,29 +10,28 @@ module.exports = {
     },
     target:'web',
     output: {
-        path: path.resolve(__dirname, 'dist/js'),
-        publicPath: "/dist/js",
-        filename: 'bundle.js',
+       path: path.resolve(__dirname, 'dist/js'),
+       publicPath: "/dist/js/",
+       filename: 'bundle.js',
     },
     module: {},
     plugins: [
-       /* new HtmlWebpackPlugin({
+        new HtmlWebpackPlugin({
             template:'./index.html',
-            filename: '../index.html',
+            filename: 'index.html',
             title:'开发测试'
-        }),*/
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
     ],
     devServer: {
         hot: true,
         inline: true,
-        port: 8080,
+        port: 8085,
         publicPath: '/dist/js/',
         contentBase: './',
-        //colors:true,
+       // open:true,
         historyApiFallback: true,
     }
-
 };
 

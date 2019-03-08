@@ -1,29 +1,31 @@
 const webpack = require('webpack');
 const path = require('path');
-const Happypack=require('happypack');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
+const CleanWebpackPlugin=require('clean-webpack-plugin');
 
 module.exports = {
     mode:'production',
     entry: {
-        index: './index.html'
+        index: './src/index.js'
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: 'index.html',
+        path: path.resolve(__dirname, 'dist/js'),
+        publicPath: 'js/',
+        filename: '[name].[chunkHash:8].js',
     },
     resolve: {
         alias: {},
-        extensions: ['echarts'],
+ /*       extensions: ['echarts'],
         mainFiles: ['.js', '.json', '.less'],
-        mainFields: ['main', 'node'],
+        mainFields: ['main', 'node'],*/
     },
     module:{
 
     },
     plugins:[
+        new CleanWebpackPlugin('dist'),
         new HtmlWebpackPlugin({
-            filename:'index.html',
+            filename:'../index.html',
             title:'线上测试专用',
             template:'./online.html'
         }),
